@@ -1,17 +1,7 @@
 <div class="container">
     <div class="d-flex justify-content-center">
       <%= form_with(model: widget, local: true) do |form| %>
-  <% if widget.errors.any? %>
-    <div id="error_explanation">
-      <h2 class="text-center m-auto"><%= pluralize(widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
-
-      <ul>
-      <% widget.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%= render 'partials/errors', obj: @widget %>
        <form class="pt-5">
             <div class="form-group">
                <%= form.label :body, for: "formgroup1" %>
@@ -36,5 +26,4 @@
         </form>
     </div>
 </div>
-<% end %>
-
+  <% end %>

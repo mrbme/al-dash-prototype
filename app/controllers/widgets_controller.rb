@@ -25,17 +25,14 @@ class WidgetsController < ApplicationController
   # POST /widgets.json
   def create
     @widget = Widget.new(widget_params)
-
-    respond_to do |format|
       if @widget.save
-        format.html { redirect_to @widget, notice: 'Widget was successfully created.' }
-        format.json { render :show, status: :created, location: @widget }
+        flash[:success] = "Post successfully created"
+        redirect_to @widget
       else
         format.html { render :new }
         format.json { render json: @widget.errors, status: :unprocessable_entity }
       end
     end
-  end
 
   # PATCH/PUT /widgets/1
   # PATCH/PUT /widgets/1.json
@@ -55,10 +52,8 @@ class WidgetsController < ApplicationController
   # DELETE /widgets/1.json
   def destroy
     @widget.destroy
-    respond_to do |format|
-      format.html { redirect_to widgets_url, notice: 'Widget was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      flash[:danger] = "Post successfully deleted"
+      redirect_to @widget
   end
 
   private
