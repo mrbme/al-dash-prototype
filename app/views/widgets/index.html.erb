@@ -1,10 +1,13 @@
+<div class="container">
+  
 <p id="notice"><%= notice %></p>
 
-<h1>Widgets</h1>
+<h1 class="text-center">Ads</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Body</th>
       <th>Headline</th>
       <th>Caption</th>
@@ -16,13 +19,14 @@
   <tbody>
     <% @widgets.each do |widget| %>
       <tr>
+        <td><code><%= widget.id %></code></td>
         <td><%= widget.body %></td>
         <td><%= widget.headline %></td>
         <td><%= widget.caption %></td>
         <td><%= widget.description %></td>
         <td><%= link_to 'Show', widget %></td>
         <td><%= link_to 'Edit', edit_widget_path(widget) %></td>
-        <td><%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +34,5 @@
 
 <br>
 
-<%= link_to 'New Widget', new_widget_path %>
+<%= link_to 'New Widget', new_widget_path, class: "btn btn-primary" %>
+</div>

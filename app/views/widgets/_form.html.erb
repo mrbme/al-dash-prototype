@@ -1,7 +1,9 @@
-<%= form_with(model: widget, local: true) do |form| %>
+<div class="container">
+    <div class="d-flex justify-content-center">
+      <%= form_with(model: widget, local: true) do |form| %>
   <% if widget.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
+      <h2 class="text-center m-auto"><%= pluralize(widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
 
       <ul>
       <% widget.errors.full_messages.each do |message| %>
@@ -10,28 +12,29 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :headline %>
-    <%= form.text_field :headline %>
-  </div>
-
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_field :caption %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+       <form class="pt-5">
+            <div class="form-group">
+               <%= form.label :body, for: "formgroup1" %>
+                <%= form.text_area :body, rows: 3, class: "form-control", placeholder: "Body of ad" %>
+            <div class="form-group">
+            	<%= form.label :headline, for: "formgroup2" %>
+            	<%= form.text_area :headline, class: "form-control", placeholder: "Headline" %>
+            </div>
+            <div class="form-group">
+            	<%= form.label :caption, for: "formgroup3" %>
+            	<%= form.text_area :caption, class: "form-control", placeholder: "Headline" %>
+            </div>
+            <div class="form-group">
+            	<%= form.label :description, for: "formgroup4" %>
+            	<%= form.text_area :description, rows: 3, class: "form-control", placeholder: "Description" %>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+              <%= form.submit "Save", class: "btn btn-primary" %>
+        </form>
+    </div>
+</div>
 <% end %>
+
