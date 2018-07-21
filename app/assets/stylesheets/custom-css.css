@@ -74,4 +74,5 @@
 code {
     background: #ffe6ea;
     padding: 4px;
+	word-break: normal !important;
 }
