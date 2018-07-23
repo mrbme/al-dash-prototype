@@ -6,7 +6,7 @@ class WidgetsController < ApplicationController
   def index
     @widgets = Widget.all
   end
-
+  
   # GET /widgets/1
   # GET /widgets/1.json
   def show
@@ -20,20 +20,23 @@ class WidgetsController < ApplicationController
   # GET /widgets/1/edit
   def edit
   end
-
+  
   # POST /widgets
   # POST /widgets.json
   def create
     @widget = Widget.new(widget_params)
+
+    respond_to do |format|
       if @widget.save
-        flash[:success] = "Post successfully created"
-        redirect_to @widget
+        format.html { redirect_to @widget, notice: 'User was successfully created.' }
+        #flash[:success] = "Post successfully created"
+        format.json { render :show, status: :created, location: @widget }
       else
         format.html { render :new }
         format.json { render json: @widget.errors, status: :unprocessable_entity }
       end
     end
-
+  end
   # PATCH/PUT /widgets/1
   # PATCH/PUT /widgets/1.json
   def update

@@ -1,0 +1,21 @@
+<div class="container">   
+<div class="d-flex justify-content-center">
+      <%= form_with(model: user, local: true) do |form| %>
+      <%= render 'partials/errors', obj: @user %>
+       <form class="pt-5">
+            <div class="form-group">
+               <%= form.label :username, for: "formgroup1" %>
+                <%= form.text_field :username, class: "form-control", placeholder: "username" %>
+            <div class="form-group">
+            	<%= form.label :email, for: "formgroup2" %>
+            	<%= form.email_field :email, class: "form-control", placeholder: "email" %>
+            </div>
+            <div class="form-group">
+            	<%= form.label :password, for: "formgroup3" %>
+            	<%= form.password_field :password, class: "form-control", placeholder: "password" %>
+            </div>
+              <%= form.submit "Sign Up", class: "btn btn-primary" %>
+        </form>
+    </div>
+  </div>
+  <% end %>
