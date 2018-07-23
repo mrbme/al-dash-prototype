@@ -1,0 +1,38 @@
+<div class="container">
+ 
+<%= render 'partials/messages' %>
+  
+<h1 class="text-center">Ads</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Body</th>
+      <th>Headline</th>
+      <th>Caption</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <% obj.each do |widget| %>
+      <tr>
+        <td><code><%= widget.id %></code></td>
+        <td><%= widget.body %></td>
+        <td><%= widget.headline %></td>
+        <td><%= widget.caption %></td>
+        <td><%= widget.description %></td>
+        <td><%= link_to 'Show', widget %></td>
+        <td><%= link_to 'Edit', edit_widget_path(widget) %></td>
+        <td><%= link_to 'Delete', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ad', new_widget_path, class: "btn btn-primary" %>
+</div>
