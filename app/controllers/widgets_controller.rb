@@ -28,7 +28,7 @@ class WidgetsController < ApplicationController
 
     respond_to do |format|
       if @widget.save
-        format.html { redirect_to @widget, notice: 'User was successfully created.' }
+        format.html { redirect_to @widget, notice: 'Ad was successfully created.' }
         #flash[:success] = "Post successfully created"
         format.json { render :show, status: :created, location: @widget }
       else

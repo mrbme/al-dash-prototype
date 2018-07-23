@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :widgets
   root to: 'pages#home'
   get '/widgets', to: 'widgets#index'
-  get 'signup', to: 'users#new'
+  get '/signup', to: 'users#new'
 end
