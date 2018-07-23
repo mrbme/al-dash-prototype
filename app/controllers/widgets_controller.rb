@@ -25,10 +25,10 @@ class WidgetsController < ApplicationController
   # POST /widgets.json
   def create
     @widget = Widget.new(widget_params)
-
+    @widget.user = User.first
     respond_to do |format|
       if @widget.save
-        format.html { redirect_to @widget, notice: 'Ad was successfully created.' }
+        format.html { redirect_to @widget, success: 'Ad was successfully created.' }
         #flash[:success] = "Post successfully created"
         format.json { render :show, status: :created, location: @widget }
       else
@@ -42,7 +42,7 @@ class WidgetsController < ApplicationController
   def update
     respond_to do |format|
       if @widget.update(widget_params)
-        format.html { redirect_to @widget, notice: 'Widget was successfully updated.' }
+        format.html { redirect_to @widget, success: 'Widget was successfully updated.' }
         format.json { render :show, status: :ok, location: @widget }
       else
         format.html { render :edit }
@@ -55,8 +55,8 @@ class WidgetsController < ApplicationController
   # DELETE /widgets/1.json
   def destroy
     @widget.destroy
-      flash[:danger] = "Post successfully deleted"
-      redirect_to @widget
+      format.html { redirect_to @widget, danger: 'User was successfully destroyed.' }
+      format.json { head :no_content }
   end
 
   private
