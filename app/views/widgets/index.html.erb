@@ -1,7 +1,10 @@
-<div class="container">
- 
-<%= render 'partials/messages' %>
-  
-<h1 align="center">Listing all ads</h1>
-
-<%= render 'widgets/widgets', obj: @widgets %>
+<div class="container pt-3">
+  <%= render 'partials/messages' %>
+  <div>
+    <h1 class="text-center">Ads List</h1>
+    <div>
+            <%= will_paginate %>
+    </div>
+      <%= render 'widgets/widgets', obj: @widgets %>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 class WidgetsController < ApplicationController
   before_action :set_widget, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_user
   # GET /widgets
   # GET /widgets.json
   def index
-    @widgets = Widget.all
+    @widgets = Widget.paginate(page: params[:page], per_page: 5)
   end
   
   # GET /widgets/1
